@@ -1,0 +1,16 @@
+CC=gcc
+CFLAGS=-c -Wall
+
+all: myshell
+
+myshell:main.o function.o inbuilt.o
+	$CC main.o function.o inbuilt.o -o myshell
+
+main.o: main.c
+	$CC $CFLAGS main.c
+
+function.o: function.c
+	$CC $CFLAGS function.c
+
+inbuilt.o: inbuilt.c
+	$CC $CFLAGS inbuilt.c
