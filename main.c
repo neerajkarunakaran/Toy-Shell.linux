@@ -29,6 +29,7 @@ int main()
  //      close(fd);  //closing file
        free(line);  //freeing line and args
        free(args);
+       free(cmd);
     } while (1);  //loop to another input
 }
 
