@@ -8,7 +8,8 @@ int main()
 {
 
 
-    int fd;  // file descriptor 
+
+    int fd, pipesize, processes;  // file descriptor 
 
  /*   int pip[2];
     int pipein = 0;
@@ -19,11 +20,17 @@ int main()
 
        printf("Myshell:-%s:>>", get_work_directory());  //myshell prompt 
        line = read_inputline();    //commands read from user
+    processes = process_creator(line);
+    if(processes > 1) {
+        pipesize = (2 * processes) - 2;
+        pip = malloc(pipesize * sizeof(int));
+        do_pipe(pipesize);
+    }
+    execute(processes);
+      // args = convert_cmd(line);   // convert user commands into arguments vector
 
-       args = convert_cmd(line);   // convert user commands into arguments vector
 
-
-       cmd_launcher(args);
+    //   cmd_launcher(args);
 
  //      select_cmd(args);  //check for inbuilt command and execute    
  //      close(fd);  //closing file
@@ -32,6 +39,5 @@ int main()
        free(cmd);
     } while (1);  //loop to another input
 }
-
 
 
