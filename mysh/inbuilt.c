@@ -24,27 +24,27 @@ void init_sh(void)  //initialise the myshell
 
 void cd_fun(void) //change working directory`
 {   
-    char *pwd;
-    int i = 0;
+
+
     if(process[0].commands[1] == NULL) {
         fprintf(stderr, "usage: cd \n");
     }
-    else if(strcmp(process[0].commands[1], "..") == 0) {  //
-        pwd = get_work_directory();
-        while(pwd[i] != '\0') {
-            ++i;
-        }
-        while(pwd[i] != '/') {
-           --i;
-        }
-        pwd[i] = '\0';
-        chdir(pwd);
-     }
+    else {
+        chdir(process[0].commands[1]);
+    }
 
-     else {
-            chdir(process[0].commands[1]);
-     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 void exit_fun(void)  //exit command
 {
