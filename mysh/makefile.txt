@@ -1,0 +1,19 @@
+CC = gcc
+CFLAGS =-c -Wall
+
+all:myshell
+
+myshell:main.o inbuilt.o process_creator.o execute.o
+	$CC main.o inbuilt.o process_creator.o execute.o
+
+main.o:myshell.h process_creator.c execute.c inbuilt.c
+	$CC $CFLAGS myshell.h process_creator.c execute.c inbuilt.c
+
+inbuilt.o: myshell.h inbuilt.c
+	$CC $CFLAGS myshell.h inbuilt.c
+
+process_creator.o:myshell.h process_creator.c
+	$CC $CFLAGS myshell.h process_creator.c
+
+execute.o:myshell.h execute.c
+	$CC $CFLAGS myshell.h execute.c
